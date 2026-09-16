@@ -5,7 +5,7 @@ const AppError = require("../utils/AppError");
 const { isValidId, updateFields } = require("../utils/helpers");
 
 // CREATE STATE
-const createState = asyncHandler(async (req, res) => {
+const createState = asyncHandler(async(req, res) => {
     const { name, country } = req.body;
 
     if (!name || !name.trim()) {
@@ -45,7 +45,7 @@ const createState = asyncHandler(async (req, res) => {
 });
 
 // GET ALL STATES
-const getStates = asyncHandler(async (req, res) => {
+const getStates = asyncHandler(async(req, res) => {
     const states = await State.find()
         .populate("country", "name")
         .sort({ name: 1 });
@@ -54,7 +54,7 @@ const getStates = asyncHandler(async (req, res) => {
 });
 
 // GET STATES BY COUNTRY
-const getStatesByCountry = asyncHandler(async (req, res) => {
+const getStatesByCountry = asyncHandler(async(req, res) => {
     if (!isValidId(req.params.countryId)) {
         throw new AppError("Invalid country ID", 400);
     }
@@ -69,7 +69,7 @@ const getStatesByCountry = asyncHandler(async (req, res) => {
 });
 
 // GET SINGLE STATE
-const getStateById = asyncHandler(async (req, res) => {
+const getStateById = asyncHandler(async(req, res) => {
     if (!isValidId(req.params.id)) {
         throw new AppError("Invalid state ID", 400);
     }
@@ -87,7 +87,7 @@ const getStateById = asyncHandler(async (req, res) => {
 });
 
 // UPDATE STATE
-const updateState = asyncHandler(async (req, res) => {
+const updateState = asyncHandler(async(req, res) => {
     if (!isValidId(req.params.id)) {
         throw new AppError("Invalid state ID", 400);
     }
@@ -139,7 +139,7 @@ const updateState = asyncHandler(async (req, res) => {
 });
 
 // DELETE STATE
-const deleteState = asyncHandler(async (req, res) => {
+const deleteState = asyncHandler(async(req, res) => {
     if (!isValidId(req.params.id)) {
         throw new AppError("Invalid state ID", 400);
     }
@@ -156,6 +156,7 @@ const deleteState = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
+
     createState,
     getStates,
     getStatesByCountry,
